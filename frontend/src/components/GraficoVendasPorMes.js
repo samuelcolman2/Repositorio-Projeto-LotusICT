@@ -31,9 +31,10 @@ function GraficoVendasPorMes() {
 
   return (
     <div>
-      <h2>Vendas por Mês</h2>
+      <h2 className="margin-left">Vendas por Mês</h2>
       <ResponsiveContainer width="100%" height={300}>
-        <BarChart data={dados}>
+        <BarChart data={dados}
+        margin={{ top: 20, right: 30, left: 50, bottom: 50 }}> {/* Faz com que os numeros do gráfico aparecam na tela sem serem cortados */}
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="Mes" />
           <YAxis

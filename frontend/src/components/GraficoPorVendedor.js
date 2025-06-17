@@ -14,7 +14,7 @@ function GraficoPorVendedor() {
     }, []);
     return (
         <div>
-            <h2>Vendas por Vendedor</h2>
+            <h2 className='margin-left'>Vendas por Vendedor</h2>
             <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
                     <Pie
