@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 import pandas as pd
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi import Query 
 
 
 app = FastAPI()
@@ -23,12 +24,21 @@ df["Data"] = pd.to_datetime(df["Data"])  # converter coluna para datas
 def ler_vendas():
     return df.to_dict(orient="records")
 
-@app.get("/vendas/por-mes")
-def vendas_por_mes():
+@app.get("/vendas/por-mes") # Alteração para filtrar por ano
+def vendas_por_mes(ano: int = Query(None), mes: int = Query(None)):
     df_mes = df.copy()
-    df_mes["Mes"] = df_mes["Data"].dt.strftime("%Y-%m")
-    resultado = df_mes.groupby("Mes")["Valor (R$)"].sum().reset_index()
+    df_mes["Ano"] = df_mes["Data"].dt.year
+    df_mes["Mes"] = df_mes["Data"].dt.month
+    df_mes["Periodo"] = df_mes["Data"].dt.strftime("%Y-%m")
+
+    if ano:
+        df_mes = df_mes[df_mes["Ano"] == ano]
+    if mes:
+        df_mes = df_mes[df_mes["Mes"] == mes]
+
+    resultado = df_mes.groupby("Periodo")["Valor (R$)"].sum().reset_index()
     return resultado.to_dict(orient="records")
+
 
 @app.get("/vendas/por-vendedor")
 def vendas_por_vendedor():
