@@ -6,7 +6,7 @@ from fastapi import Query
 
 app = FastAPI()
 
-# Importação do CORS se faz necessária para comunicação do BackEnd Com FrontEnd já que rodam em portas diferentes
+# Adicionando o CORS a intancia app para o backend se comunicar com o frontend sem bloqueios.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"], 
