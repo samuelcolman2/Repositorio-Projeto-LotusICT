@@ -52,12 +52,12 @@ function GraficoVendasPorMes() {
 
   return (
     <div>
-      <h2>Vendas por Mês</h2>
+      <h2 className='margin-left'>Vendas por Mês</h2>
 
-      <div style={{ marginBottom: '20px' }}>
+      <div className='margin-left' style={{ marginBottom: '20px' }}>
         <label>
           Ano:
-          <select value={ano} onChange={(e) => { setAno(e.target.value); setMes(''); }}>
+          <select style={{ marginLeft:'5px'}} value={ano} onChange={(e) => { setAno(e.target.value); setMes(''); }}>
             <option value="">Todos</option>
             <option value="2024">2024</option>
             <option value="2025">2025</option>
@@ -66,7 +66,7 @@ function GraficoVendasPorMes() {
 
         <label style={{ marginLeft: '10px' }}>
           Mês:
-          <select value={mes} onChange={(e) => setMes(e.target.value)}>
+          <select style={{ marginLeft:'5px'}} value={mes} onChange={(e) => setMes(e.target.value)}>
             <option value="">Todos</option>
             {obterMeses().map(m => (
               <option key={m.valor} value={m.valor}>{m.nome}</option>
@@ -74,7 +74,7 @@ function GraficoVendasPorMes() {
           </select>
         </label>
 
-        <button onClick={buscarDados} style={{ marginLeft: '10px' }}>Filtrar</button>
+        <button  onClick={buscarDados} className='btn'>Filtrar</button>
       </div>
 
       <ResponsiveContainer width="100%" height={300}>

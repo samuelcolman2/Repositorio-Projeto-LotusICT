@@ -21,7 +21,7 @@ function ProdutoMaisVendido() {
       textAlign: 'center',
       backgroundColor: '#f0f8ff'
     }}>
-      <h2>🔥 Produto Mais Vendido</h2>
+      <h2>Produto Mais Vendido</h2>
       <h3>{produto.produto}</h3>
       <p>Total Vendido: <strong>{produto.valor_total}</strong></p>
     </div>
